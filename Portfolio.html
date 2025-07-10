@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luka Anthony</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Logo.png" type="image/png">
     <!-- Import de la police Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -14,28 +15,140 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <img src="Logo.png" alt="Logo" class="logo">
+            <a href="Portfolio.html"><img src="Logo.png" alt="Logo" class="logo"></a>
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Trainings</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#trainings">Trainings</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
-    <h2>Hello, I'm</h2>
+    <section id="home">
+        <h2>Hello, I'm</h2>
+        <br>
+        <h1>Luka Anthony</h1>
+        <br>
+        <h3>A beginner web developer passionate about code and create</h3>
+        <div class="button-wrapper">
+            <a href="#projects" class="btn projects">Projects</a>
+            <a href="#contact" class="btn contact">Contact</a>
+        </div>
+    </section>
+    <section id="about" style="padding: 80px 20px; background-color: black;">
+        <h1 class="top1">About Me</h1>
+        <h3>Passionate about computers since elementary school, I started to become interested in application and game
+            design. This year, I started learning different programming languages in order to design my own website</h3>
+        <h2 class="white" class="top2">Skills</h2>
+        <div class="img-container">
+            <img src="JS.png" alt="JS">
+            <img src="HTML.png" alt="HTML">
+            <img src="CSS.png" alt="CSS">
+            <img src="GIT.png" alt="GIT">
+        </div>
+        <br>
+    </section>
+    <section id="trainings">
+        <h1 class="top2" class="main-title">Trainings</h1>
+        <h2 class="white" class="left" class="subtitle"><a href="Internship Trainings.html">Internship Trainings</a>
+        </h2>
+    </section>
     <br>
-    <h1>Luka Anthony</h1>
     <br>
-    <h3>A beginner web developer passionate about code and create</h3>
-    <div class="button-wrapper">
-        <a href="#projects" class="btn projects">Projects</a>
-        <a href="#contact" class="btn contact">Contact</a>
-    </div>
-<section id="about" style="padding: 80px 20px; background-color: black;"></section>
-<h1>About Me</h1>
-<h3>Passionate about computers since elementary school, I started to become interested in application and game design. This year, I started learning different programming languages in order to design my own website</h3>
+    <section id="projects">
+        <h1 class="top2">My Projects</h1>
+        <h3>A selection of my recent work, showcasing my skills in design and development</h3>
+        <div class="project-tabs">
+            <input type="radio" name="project-tab" id="tab1" checked>
+            <input type="radio" name="project-tab" id="tab2">
+
+            <div class="tab-labels">
+                <label for="tab1" class="tab">Project 1</label>
+                <label for="tab2" class="tab">Project 2</label>
+                <div class="tab-underline"></div>
+            </div>
+
+            <div class="tab-content content1">
+                <h3>Calculator</h3>
+                <div class="project-box">
+                    <div class="project-image">
+                        <img src="calculator.jpg" alt="Aperçu du projet">
+                    </div>
+                    <div class="project-info">
+
+                        <p>A simple calculator designed with my HTML, CSS and JS skills. Its use consists of entering
+                            the
+                            first number of the operation, then the operator and finally the second number. After that
+                            just
+                            press the equal button to get the answer ! </p>
+                        <a href="Calculator.html" class="demo-button">Demo</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-content content2">
+                <h3>Tab Slider</h3>
+                <div class="project-box">
+                    <div class="project-image">
+                        <img src="slider.jpg" alt="Aperçu du projet">
+                    </div>
+                    <div class="project-info">
+
+                        <p>It is built entirely with HTML and CSS. It allows users to navigate between different content
+                            sections using animated tabs with a smooth sliding effect and a dynamic bar highlighting the
+                            active tab</p>
+                        <a href="Slider.html" class="demo-button">Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    </section>
+    <section id="contact">
+        <h1 class="top2">Contact Me</h1>
+        <h3>I'm always open to discussing new projects, creative ideas, or opportunities to be part of something
+            amazing
+        </h3>
+        <h2 class="white">Get In Touch</h2>
+        <h3>Have questions? Ping me with an email at</h3>
+        <h3 class="blue"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=lukaanthony282@gmail.com"
+                target="_blank">
+                lukaanthony282@gmail.com
+            </a>
+        </h3>
+    </section>
+    
+    <footer>
+        <p class="center">&copy; 2025 Luka Anthony - All Rights Reserved</p>
+    </footer>
+
+    <script>
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".navbar a");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120; // ajuste en fonction de la hauteur de ta navbar
+                const sectionHeight = section.offsetHeight;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href").includes("#" + current)) {
+                    link.classList.add("active");
+                }
+
+            });
+        });
+    </script>
+
 </body>
 
 </html>

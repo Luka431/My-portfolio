@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Slider</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="icon" href="Logo.png" type="image/png">
+    <!-- Import de la police Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="font">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="Portfolio.html"><img src="Logo.png" alt="Logo" class="logo"></a>
+            <ul class="nav-links">
+                <li><a href="Portfolio.html#home">Home</a></li>
+                <li><a href="Portfolio.html#about">About</a></li>
+                <li><a href="Portfolio.html#trainings">Trainings</a></li>
+                <li><a href="Portfolio.html#projects">Projects</a></li>
+                <li><a href="Portfolio.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <br><br><br>
+    <h1 class="top2">Tab Slider</h1>
+    <section>
+        <form id="tabForm">
+            <input type="text" id="tabTitle" placeholder="Tab name" required>
+            <textarea id="tabContent" placeholder="Tab content..." rows="3" required></textarea>
+            <button type="submit">Add</button>
+        </form>
+
+        <div class="tab-bar" id="tabBar"></div>
+        <div class="tab-display" id="tabDisplay">No content selected.</div>
+    </section>
+
+    <script>
+        const form = document.getElementById("tabForm");
+        const tabBar = document.getElementById("tabBar");
+        const tabDisplay = document.getElementById("tabDisplay");
+
+        let currentTab = null;
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const title = document.getElementById("tabTitle").value.trim();
+            const content = document.getElementById("tabContent").value.trim();
+
+            if (title && content) {
+                const tab = document.createElement("div");
+                tab.className = "tab";
+                tab.textContent = title;
+                tab.dataset.content = content;
+
+                tab.addEventListener("click", function () {
+                    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+                    tab.classList.add("active");
+                    currentTab = tab;
+
+                    tabDisplay.innerHTML = `
+          <h3>${title}</h3>
+          <p>${content}</p>
+          <button id="editBtn">Edit</button>
+          <button id="deleteBtn">Delete</button>
+        `;
+
+                    // Bouton Modifier
+                    document.getElementById("editBtn").addEventListener("click", () => {
+                        document.getElementById("tabTitle").value = tab.textContent;
+                        document.getElementById("tabContent").value = tab.dataset.content;
+                        tabBar.removeChild(tab);
+                        tabDisplay.innerHTML = "Aucun contenu sélectionné.";
+                    });
+
+                    // Bouton Supprimer
+                    document.getElementById("deleteBtn").addEventListener("click", () => {
+                        tabBar.removeChild(tab);
+                        tabDisplay.innerHTML = "Aucun contenu sélectionné.";
+                    });
+                });
+
+                tabBar.appendChild(tab);
+                form.reset();
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

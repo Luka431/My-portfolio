@@ -1,0 +1,229 @@
+.font {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Barre de navigation */
+.navbar {
+    background-color: #000;
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Logo à gauche */
+.logo {
+    height: 70px;
+    width: 80px;
+    margin-left: -60px;
+}
+
+/* Onglets à droite */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+}
+
+.nav-links li a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* 🎨 Effet de survol violet-bleuté */
+.nav-links li a:hover {
+    color: #0e5fc9;
+}
+
+/* 📱 Responsive pour petit écran */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 15px;
+        gap: 15px;
+    }
+
+    .nav-links li a {
+        padding: 5px 0;
+    }
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+    padding-top: 75px;
+    margin-top: 75px;
+}
+
+.tab-container {
+  max-width: 700px;
+  margin: auto;
+}
+
+.tab-label {
+  display: inline-block;
+  padding: 12px 20px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: #ccc;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-label:hover {
+  color: #fff;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input#tab1:checked ~ .tab1-content,
+input#tab2:checked ~ .tab2-content,
+input#tab3:checked ~ .tab3-content {
+  display: block;
+}
+
+.tab-content {
+  display: none;
+  margin-top: 20px;
+  background-color: #222;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+input#tab1:checked + label,
+input#tab2:checked + label,
+input#tab3:checked + label {
+  border-bottom: 2px solid #0e5fc9;
+  color: #0e5fc9;
+}
+
+.tab-bar {
+  display: flex;
+  gap: 20px;
+  border-bottom: 2px solid #333;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 10px 20px;
+  font-weight: bold;
+  color: #ccc;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  color: #0e5fc9;
+  border-bottom: 2px solid #0e5fc9;
+}
+
+.tab-display {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Formulaire pour ajouter un projet (onglet personnalisé) */
+#tabForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 40px auto;
+}
+
+#tabForm input,
+#tabForm textarea {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 10px;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+#tabForm input::placeholder,
+#tabForm textarea::placeholder {
+  color: #888;
+}
+
+#tabForm button {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  background-color: #0e5fc9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: fit-content;
+  align-self: flex-start;
+  transition: background-color 0.3s ease;
+}
+
+#tabForm button:hover {
+  background-color: #0e5fc9;
+}
+
+#editBtn,
+#deleteBtn {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  padding: 10px 14px;
+  margin-right: 10px;
+  background-color: #0e5fc9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#editBtn:hover,
+#deleteBtn:hover {
+  background-color: #0e5fc9;
+}
+
+
+h1 {
+    text-align: center;
+    color: #0e5fc9;
+    margin-top: 0px;
+    margin-bottom: 0.5rem;
+    padding: 0;
+    line-height: 1.2;
+}
+
+.top2 {
+    margin-top: 80px;
+}

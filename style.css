@@ -9,18 +9,27 @@
 .navbar {
     background-color: #000;
     padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* Logo à gauche */
 .logo {
     height: 70px;
-    width: auto;
+    width: 80px;
+    margin-left: -60px;
 }
 
 /* Onglets à droite */
@@ -40,7 +49,7 @@
 
 /* 🎨 Effet de survol violet-bleuté */
 .nav-links li a:hover {
-    color: #7a00cc;
+    color: #0e5fc9;
 }
 
 /* 📱 Responsive pour petit écran */
@@ -62,13 +71,20 @@
     }
 }
 
+.navbar a.active {
+  color: #0e5fc9; /* bleu vif ou toute autre couleur qui contraste */
+  border-bottom: 2px solid #0e5fc9;
+}
+
+
 body {
     background-color: black;
+    padding-top: 80px;
 }
 
 h1 {
     text-align: center;
-    color: #3e03aa;
+    color: #0e5fc9;
     margin-top: 0px;
     margin-bottom: 0.5rem;
     padding: 0;
@@ -80,7 +96,7 @@ h2 {
     color: white;
     margin-top: 80px;
     margin-bottom: 0.5rem;
-    padding: 0;
+    padding-top: 80px;
     line-height: 1.2;
 }
 
@@ -93,38 +109,289 @@ h3 {
     line-height: 1.2;
 }
 
+.top1 {
+    margin-top: 5px;
+}
+
+.top2 {
+    margin-top: 80px;
+}
+
+.left {
+    text-align: left;
+    margin-left: 20px;
+    color: rgb(49, 161, 236);
+}
+
 .button-wrapper {
-  margin-top: 24px;
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
+    margin-top: 24px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .btn {
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s ease, transform 0.2s ease;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .projects {
-  background-color: #5f00cc;
-  color: white;
+    background-color: #0e5fc9;
+    color: white;
 }
 
 .projects:hover {
-  background-color: #5f00cc;
-  transform: scale(1.05);
+    transform: scale(1.05);
+    color: white;
 }
 
 .contact {
-  background-color: #5f00cc;
-  color: white;
+    background-color: #0e5fc9;
+    color: white;
 }
 
 .contact:hover {
-  background-color: #5f00cc;
-  transform: scale(1.05);
+    transform: scale(1.05);
+    color: white;
+}
+
+img {
+    display: inline-block;
+    width: 100px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.1);
+    /* zoom léger */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    /* ombre subtile */
+}
+
+.img-container {
+    text-align: center;
+    /* centre les éléments inline à l’intérieur */
+}
+
+summary {
+    color: #6d6c6d;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.details {
+    color: white;
+    text-align: left;
+    margin-left: 20px;
+}
+
+li {
+    color: white;
+}
+
+a {
+    color: #fff;
+    /* couleur du texte : blanc ou ce que tu veux */
+    text-decoration: none;
+    /* retire le soulignement */
+}
+
+a:visited {
+    color: #fff;
+    /* couleur après clic (évite le violet) */
+}
+
+a:hover {
+    color: #0e5fc9;
+    /* couleur au survol */
+    text-decoration: none;
+    /* ou laisse à none pour garder clean */
+}
+
+.training-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* ou center selon ton style */
+    margin-bottom: 40px;
+}
+
+.main-title {
+    margin-bottom: 0;
+    /* Évite les espaces automatiques trop grands */
+    font-size: 2em;
+}
+
+.subtitle {
+    margin-top: -10px;
+    /* Réduction visible de l’espace */
+    position: relative;
+    top: -5px;
+    /* Décalage fin vers le haut */
+    font-size: 1.1em;
+}
+
+/* Assure-toi d'importer Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #000;
+    /* fond sombre */
+    color: #fff;
+}
+
+.project-tabs {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.tab-labels {
+    display: flex;
+    position: relative;
+    border-bottom: 2px solid #222;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 15px 0;
+    cursor: pointer;
+    font-weight: 600;
+    color: #888;
+    transition: color 0.3s ease;
+}
+
+input#tab1:checked~.tab-labels label[for="tab1"],
+input#tab2:checked~.tab-labels label[for="tab2"] {
+    color: #0e5fc9;
+}
+
+.tab-underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
+    height: 2px;
+    background-color: #0e5fc9;
+    transition: transform 0.3s ease;
+}
+
+input#tab2:checked~.tab-labels .tab-underline {
+    transform: translateX(100%);
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    background: #111;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+input#tab1:checked~.content1,
+input#tab2:checked~.content2 {
+    display: block;
+}
+
+.project-box {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    background: #111;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.project-image img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #00ffff40;
+}
+
+.project-info {
+    flex: 1;
+}
+
+.project-info h3 {
+    color: #00ffff;
+    margin-bottom: 10px;
+}
+
+.project-info p {
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.demo-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0e5fc9;
+    color: white;
+    border-radius: 5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.demo-button:hover {
+    background-color: #0e5fc9;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .project-box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .project-image img {
+        max-width: 100%;
+    }
+}
+
+.blue {
+    color: #0e5fc9;
+}
+
+.white {
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+    margin-bottom: 0.5rem;
+    padding-top: 30px;
+    line-height: 1.2;
+}
+
+.center {
+    text-align: center;
+}
+
+section {
+  scroll-margin-top: 120px; /* ajuste en fonction de la hauteur réelle de ta navbar */
+  padding-bottom: 100px;
+}
+
+#contact {
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: 30px; /* ajuste à ta convenance */
+}
+
+html {
+  scroll-behavior: smooth;
 }

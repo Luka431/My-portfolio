@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="icon" href="Logo.png" type="image/png">
+    <!-- Import de la police Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="font">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="Portfolio.html"><img src="Logo.png" alt="Logo" class="logo"></a>
+            <ul class="nav-links">
+                <li><a href="Portfolio.html#home">Home</a></li>
+                <li><a href="Portfolio.html#about">About</a></li>
+                <li><a href="Portfolio.html#trainings">Trainings</a></li>
+                <li><a href="Portfolio.html#projects">Projects</a></li>
+                <li><a href="Portfolio.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <br><br><br> <!-- Marge pour éviter la barre fixe -->
+    <h1 class="top2">Calculator</h1>
+    <form id="calculator" class="calculator">
+        <input type="number" id="firstNumber" placeholder="Enter first number" required>
+
+        <div id="operationButtons" class="operations">
+            <button type="button" data-op="+">+</button>
+            <button type="button" data-op="-">−</button>
+            <button type="button" data-op="*">×</button>
+            <button type="button" data-op="/">÷</button>
+        </div>
+
+
+
+
+        <input type="number" id="secondNumber" placeholder="Enter second number" required>
+        <div class="equal-button-container">
+            <button type="button" onclick="calculate()">=</button>
+        </div>
+        <input type="text" id="result" placeholder="Result" readonly>
+
+        <button type="reset" onclick="resetCalculator()">Reset</button>
+
+    </form>
+
+
+    <!-- Script corrigé -->
+    <script>
+        let selectedOperation = null;
+
+        document.querySelectorAll('#operationButtons button').forEach(button => {
+            button.addEventListener('click', () => {
+                selectedOperation = button.getAttribute('data-op');
+
+                // Retire la classe active de tous les boutons
+                document.querySelectorAll('#operationButtons button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+
+                // Ajoute la classe active au bouton cliqué
+                button.classList.add('active');
+            });
+        });
+
+        function calculate() {
+            const first = parseFloat(document.getElementById("firstNumber").value);
+            const second = parseFloat(document.getElementById("secondNumber").value);
+            let result;
+
+            if (isNaN(first) || isNaN(second)) {
+                result = "Please fill all input fields";
+            } else if (!selectedOperation) {
+                result = "Please select an operation";
+            } else {
+                switch (selectedOperation) {
+                    case "+":
+                        result = first + second;
+                        break;
+                    case "-":
+                        result = first - second;
+                        break;
+                    case "*":
+                        result = first * second;
+                        break;
+                    case "/":
+                        result = second !== 0 ? first / second : "Division by 0 is impossible";
+                        break;
+                    default:
+                        result = "Invalid operation";
+                }
+            }
+
+            document.getElementById("result").value = result;
+        }
+
+        function resetCalculator() {
+            document.getElementById("firstNumber").value = "";
+            document.getElementById("secondNumber").value = "";
+            document.getElementById("result").value = "";
+
+            // Réinitialise l'opération sélectionnée
+            selectedOperation = null;
+
+            // Retire la classe 'active' des boutons d'opération
+            document.querySelectorAll('#operationButtons button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+        }
+
+    </script>
+</body>
+
+</html>
