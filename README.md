@@ -13,7 +13,7 @@ The goal is to build a modern, responsive, and user-friendly website to highligh
 
 - HTML5  
 - CSS3  
-- JavaScript (optional)  
+- JavaScript
 - Git
 
 ## 📁 Website Structure
